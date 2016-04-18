@@ -13,7 +13,7 @@ $Blog->pagename = 'blog';
 $Blog = $Blog->getPage();
 ?>
 <div>
-	<label> <?php echo ossn_print('site:about'); ?> </label>
+	<label> <?php echo ossn_print('site:blog'); ?> </label>
 	<textarea name="pagebody" class="ossn-editor"><?php echo html_entity_decode($Blog->description); ?></textarea>
 <div>
 <div>
