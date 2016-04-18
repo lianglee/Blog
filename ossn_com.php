@@ -8,9 +8,9 @@
  * @license   General Public Licence http://www.opensource-socialnetwork.org/licence
  * @link      http://www.opensource-socialnetwork.org/licence
  */
-define('BLOG', ossn_route()->com . 'Blog/');
+define('__BLOG__', ossn_route()->com . 'Blog/');
 
-require_once(BLOG . 'classes/Blog.php');
+require_once(__BLOG__ . 'classes/Blog.php');
 
 function blog_init() {
 		if(ossn_isLoggedin()) {
