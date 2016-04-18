@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component xmlns="http://www.opensource-socialnetwork.org/v/3.0">
-    <name>Zing Space Bucketlist Blog</name>
-    <id>zingblog</id>
+    <name>OSSN Blog</name>
+    <id>blog</id>
     <author>Ken McGonigal</author>
-    <description>Create your bucket list and blog here.</description>
+    <description>Component for creating blogs in OSSN.</description>
     <license>GNU General Public License, version 2</license>
     <author_url>https://zing.space/</author_url>
     <license_url>http://www.opensource-socialnetwork.org/licence/</license_url>
