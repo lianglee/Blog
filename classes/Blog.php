@@ -34,7 +34,7 @@ class Blog extends OssnObject {
 						$this->subtype     = 'blog';
 						$this->owner_guid  = $user->guid;
 						if($this->addObject()) {
-								return true;
+								return $this->getObjectId();
 						}
 				}
 				return false;
@@ -48,8 +48,7 @@ class Blog extends OssnObject {
 		 */
 		public function getBlog($guid = '') {
 				if(!empty($guid)) {
-						$this->object_guid = $guid;
-						$blog              = $this->getObjectById();
+						$blog = ossn_get_object($guid);
 						if($blog) {
 								return $blog;
 						}
@@ -61,14 +60,11 @@ class Blog extends OssnObject {
 		 *
 		 * return object|false;
 		 */
-		public function getBlogs() {
-				$this->type    = 'user';
-				$this->subtype = 'blog';
-				$blogs         = $this->getObjectsByTypes();
-				if($blogs) {
-						return $blogs;
-				}
-				return false;
+		public function getBlogs(array $params = array()) {
+				return $this->searchObject(array_merge(array(
+						'type' => 'user',
+						'subtype' => 'blog'
+				), $params));
 		}
 		/**
 		 * Get user blogs
@@ -77,16 +73,31 @@ class Blog extends OssnObject {
 		 *
 		 * return object|false;
 		 */
-		public function getUserBlogs($user) {
+		public function getUserBlogs($user, $params = array()) {
 				if($user instanceof OssnUser) {
-						$this->type       = 'user';
-						$this->subtype    = 'blog';
-						$this->owner_guid = $user->guid;
-						$blogs            = $this->getObjectByOwner();
-						if($blogs) {
-								return $blogs;
-						}
+						return $this->searchObject(array_merge(array(
+								'type' => 'user',
+								'subtype' => 'blog',
+								'owner_guid' => $user->guid
+						), $params));
 				}
 				return false;
 		}
+		/**
+		 * Profile URL of blog
+		 *
+		 * return string;
+		 */
+		public function profileURL($type = 'view') {
+				$title = OssnTranslit::urlize($this->title);
+				return ossn_site_url("blog/{$type}/$this->guid/$title");
+		}
+		/**
+		 * Profile URL of blog
+		 *
+		 * return string;
+		 */
+		public function deleteURL($type = 'view') {
+				return ossn_site_url("action/blog/delete?guid=$this->guid", true);
+		}		
 } //class
