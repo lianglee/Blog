@@ -27,10 +27,11 @@
                 </div>
                 </div>
                 <div class="controls">
-                	<?php if(ossn_loggedin_user()->guid == $params['blog']->owner_guid || ossn_loggedin_user()->canModerate()){ ?>
-                	<a href="<?php echo $params['blog']->profileURL('edit');?>" class="btn btn-success"><?php echo ossn_print('edit');?></a>
-                	<a href="<?php echo $params['blog']->deleteURL();?>" class="btn btn-danger"><?php echo ossn_print('delete');?></a>
-                    <?php } ?>
+	               	<?php if(ossn_isLoggedin()) {
+				if(ossn_loggedin_user()->guid == $params['blog']->owner_guid || ossn_loggedin_user()->canModerate()){ ?>
+					<a href="<?php echo $params['blog']->profileURL('edit');?>" class="btn btn-success"><?php echo ossn_print('edit');?></a>
+					<a href="<?php echo $params['blog']->deleteURL();?>" class="btn btn-danger"><?php echo ossn_print('delete');?></a>
+        		<?php }} ?>
                 </div>
             </div>
 	</div>
