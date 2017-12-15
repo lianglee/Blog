@@ -26,15 +26,18 @@ function blog_init() {
 		ossn_register_callback('page', 'load:profile', 'ossn_profile_blog_menu');
 		
 		ossn_extend_view('css/ossn.default', 'css/blog');
+		ossn_extend_view('js/opensource.socialnetwork', 'js/blog');
 		ossn_register_page('blog', 'ossn_blog_page_handler');
 		
 		ossn_register_sections_menu('newsfeed', array(
+				'name' => 'allblogs',
 				'text' => ossn_print('blog:all'),
 				'url' => ossn_site_url('blog/all'),
 				'section' => 'blog',
 				'icon' => true
 		));
 		ossn_register_sections_menu('newsfeed', array(
+				'name' => 'addblog',
 				'text' => ossn_print('blog:add'),
 				'url' => ossn_site_url('blog/add'),
 				'section' => 'blog',
@@ -51,7 +54,7 @@ function blog_init() {
 function ossn_get_blog($guid) {
 		if($object = ossn_get_object($guid)) {
 				$type = (array) $object;
-				if($object->subtype = 'blog') {
+				if($object->subtype == 'blog') {
 						return arrayObject($type, 'Blog');
 				}
 		}
