@@ -15,7 +15,7 @@
  </div>
  <div>
  	<label><?php echo ossn_print('blog:contents');?></label>
-    <textarea name="contents"></textarea>
+    <textarea class="ossn-editor" name="contents"></textarea>
  </div>
  <div class="margin-top-10">
  	<input type="submit" class="btn btn-success" value="<?php echo ossn_print('save');?>" />
