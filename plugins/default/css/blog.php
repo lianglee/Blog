@@ -48,3 +48,9 @@
     border-bottom: 1px solid #eee;
     font-weight: bold;
 }
+.menu-section-item-allblogs::before {
+    content: "\f24d" !important;
+}
+.menu-section-item-addblog::before {
+    content: "\f067" !important;
+}
