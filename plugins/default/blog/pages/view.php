@@ -12,7 +12,7 @@
 <div class="ossn-page-contents">
 	<div class="blog">
     		<div class="blog-title"><?php echo $params['blog']->title;?></div>
-			<div class="blog-body"><?php echo nl2br($params['blog']->description);?></div>
+			<div class="blog-body"><?php echo html_entity_decode($params['blog']->description, ENT_QUOTES, 'UTF-8');?></div>
             <div class="aba">
             		<?php
 						$user = ossn_user_by_guid($params['blog']->owner_guid);
@@ -27,10 +27,11 @@
                 </div>
                 </div>
                 <div class="controls">
-                	<?php if(ossn_loggedin_user()->guid == $params['blog']->owner_guid || ossn_loggedin_user()->canModerate()){ ?>
-                	<a href="<?php echo $params['blog']->profileURL('edit');?>" class="btn btn-success"><?php echo ossn_print('edit');?></a>
-                	<a href="<?php echo $params['blog']->deleteURL();?>" class="btn btn-danger"><?php echo ossn_print('delete');?></a>
-                    <?php } ?>
+	               	<?php if(ossn_isLoggedin()) {
+				if(ossn_loggedin_user()->guid == $params['blog']->owner_guid || ossn_loggedin_user()->canModerate()){ ?>
+					<a href="<?php echo $params['blog']->profileURL('edit');?>" class="btn btn-success"><?php echo ossn_print('edit');?></a>
+					<a href="<?php echo $params['blog']->deleteURL();?>" class="btn btn-danger"><?php echo ossn_print('delete');?></a>
+        		<?php }} ?>
                 </div>
             </div>
 	</div>
