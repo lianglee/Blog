@@ -15,7 +15,7 @@
  </div>
  <div>
  	<label><?php echo ossn_print('blog:contents');?></label>
-    <textarea name="contents"><?php echo $params['blog']->description;?></textarea>
+    <textarea class="ossn-editor" name="contents"><?php echo $params['blog']->description;?></textarea>
  </div>
  <div class="margin-top-10">
  	<input type="hidden" name="guid" value="<?php echo $params['blog']->guid;?>" />
