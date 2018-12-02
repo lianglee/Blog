@@ -12,7 +12,7 @@
 <div class="ossn-page-contents">
 	<div class="blog">
     		<div class="blog-title"><?php echo $params['blog']->title;?></div>
-			<div class="blog-body"><?php echo nl2br($params['blog']->description);?></div>
+			<div class="blog-body"><?php echo html_entity_decode($params['blog']->description);?></div>
             <div class="aba">
             		<?php
 						$user = ossn_user_by_guid($params['blog']->owner_guid);
