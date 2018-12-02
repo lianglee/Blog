@@ -15,8 +15,11 @@
  </div>
  <div>
  	<label><?php echo ossn_print('blog:contents');?></label>
-    <textarea class="ossn-editor" name="contents"></textarea>
- </div>
+	<?php	echo ossn_plugin_view('input/textarea', array(
+				'class' => 'ossn-editor',
+				'name'  => 'contents'
+	)); ?>
+</div>
  <div class="margin-top-10">
  	<input type="submit" class="btn btn-success" value="<?php echo ossn_print('save');?>" />
  </div>

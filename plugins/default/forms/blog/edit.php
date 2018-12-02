@@ -15,7 +15,13 @@
  </div>
  <div>
  	<label><?php echo ossn_print('blog:contents');?></label>
-    <textarea class="ossn-editor" name="contents"><?php echo $params['blog']->description;?></textarea>
+	 <?php	echo ossn_plugin_view('input/textarea', array(
+				'class' => 'ossn-editor',
+				'name'  => 'contents',
+				'value' => html_entity_decode($params['blog']->description)
+	)); ?>
+
+ 	<textarea name="contents" class="ossn-editor"><?php echo html_entity_decode($params['blog']->description); ?></textarea>
  </div>
  <div class="margin-top-10">
  	<input type="hidden" name="guid" value="<?php echo $params['blog']->guid;?>" />
